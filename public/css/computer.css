@@ -86,10 +86,17 @@ input[type=text] {
   outline: none;
   width: 72vh;
   padding: 0vw;
+  text-transform: lowercase;
 }
 
 input[type=text]:focus {
   outline: none;
+}
+
+input[type=text].invalid, input[type=text]:invalid {
+  box-shadow: none;
+  outline: none;
+  border-bottom-color: red;
 }
 
 input[type=button], input[type=submit], input[type=reset] {

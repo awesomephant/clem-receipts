@@ -6,9 +6,9 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-const device  = new escpos.USB();
-const options = { encoding: "utf-8" /* default */ }
-const printer = new escpos.Printer(device, options);
+//const device  = new escpos.USB();
+//const options = { encoding: "utf-8" /* default */ }
+//const printer = new escpos.Printer(device, options);
 
 app.use(express.static('public'));
 app.get('/', function (req, res) {
@@ -16,6 +16,9 @@ app.get('/', function (req, res) {
 });
 app.get('/thankyou', function (req, res) {
     res.sendFile(__dirname + '/thankyou.html');
+});
+app.get('/about', function (req, res) {
+    res.sendFile(__dirname + '/about.html');
 });
 
 http.listen(3000, function () {
@@ -48,8 +51,8 @@ function printWords(words) {
   });
 }
 
-function pickRandomSubmission(data){
-  return data[getRandomInt(0,data.length - 1)]
+function pickRandomWords(data){
+    return data[getRandomInt(0,data.length - 1)]
 }
 
 io.on('connection', function (socket) {
@@ -58,12 +61,13 @@ io.on('connection', function (socket) {
     socket.on('submission', function (words) {
         console.log(words)
         let data = JSON.parse(fs.readFileSync(dataFile))
+        let randomWords = pickRandomWords(data.submissions)
+        
         data.submissions.push(new Submission(words, Date.now()))
         fs.writeFileSync(dataFile, JSON.stringify(data))
-        let randomWords = pickRandomSubmission(data.submissions)
         console.log(randomWords)
         setTimeout(function(){
-          printWords(randomWords.words)
+         // printWords(randomWords.words)
         }, 4000)
 
     });
