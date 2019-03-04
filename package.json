@@ -1,0 +1,12 @@
+{
+    "name": "clem-receipts",
+    "description": "description",
+    "authors": "Max Kohler",
+    "version": "1.0.0",
+    "main": "pathToMain",
+    "dependencies": {
+        "express": "*",
+        "socket.io": "*",
+        "escpos": "*"
+    }
+}

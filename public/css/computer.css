@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #FFFFFF;
+
+}
+
+#preloader {
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color:white; /* change if the mask should have another color then white */
+  z-index:150; /* makes sure it stays on top */
+}
+
+div{
+  display: block;
+
+}
+
+/*HEADER*/
+
+.header{
+  position: fixed;
+  z-index: 100;
+  height:10vh;
+  width: 100vw;
+  font-family: sans-serif;
+}
+
+.display-right{
+  position: absolute;
+  right: 3vh;
+  top:2.4vh;
+  float: right;
+
+}
+
+.display-left{
+  position: absolute;
+  float: left;
+  left: 3vh;
+  top:2.4vh;
+}
+
+
+}
+
+/*GALLERY*/
+
+.gallery {
+  width: 100vw;
+  float: left;
+  padding-top:10vh;
+  padding-bottom: 3vh;
+}
+
+.yourfavwords{
+  width: 100vw;
+  float: left;
+  text-align: center;
+  margin-top: 8.5vh;
+}
+
+.title{
+  display: inline-block;
+}
+
+/*FORM*/
+
+form {
+  font-size: 2.9vh;
+  font-family:'Libre Baskerville', serif;
+  line-height: 2.8vh;
+}
+
+input[type=text] {
+  border: none;
+  border-bottom: 2.4px solid black;
+  font-size: 5.8vh;
+  font-family:'Libre Baskerville', serif;
+  color: #0000FF;
+  outline: none;
+  width: 72vh;
+  padding: 0vw;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  border: 2.4px solid black;
+  color: black;
+  cursor: pointer;
+  font-size: 2.5vh;
+  font-family: sans-serif;
+  padding: 0.1vh 0.2vh;
+}
+
+input[type=submit]:hover {
+    border: 2.4px solid #0000FF;
+    color: #0000FF;
+}
+
+/*FANKS*/
+
+.thankyou{
+  padding-top: 25vh;
+  padding-right: 10vw;
+  padding-left: 10vw;
+  text-align: center;
+  font-size: 5.5vw;
+  font-family:'Libre Baskerville', serif;
+}
+
+/*ABOUT*/
+
+.about{
+  text-align: center;
+}
+
+.description{
+  margin-top: 8.5vh;
+  display: inline-block;
+  width: 72vh;
+
+}
+/*FONT STYLE*/
+
+.navigation{
+  font-size: 2.5vh;
+  font-weight: 4500;
+}
+
+.form-big{
+  font-size: 5.8vh;
+  font-family:'Libre Baskerville', serif;
+
+}
+
+.form-medium{
+  font-size: 2.9vh;
+  font-family: 'Libre Baskerville', serif;
+}
+
+/*BASIC SETTINGS*/
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+    color: #0000FF;
+}
