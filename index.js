@@ -39,20 +39,47 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function printWords(words) {
-  device.open(function(){
-    printer
-    .font('a')
-    .align('ct')
-    .style('bu')
-    .size(1, 1)
-    .text("Glossary\n")
-    .text(words.join("\n"))
-    .close()
-  });
+    device.open(function () {
+        printer
+            .font('a')
+            .align('ct')
+            .style('bu')
+            .size(1, 1)
+            .text("Glossary\n")
+            .text(words.join("\n"))
+            .close()
+    });
 }
 
-function pickRandomWords(data){
-    return data[getRandomInt(0,data.length - 1)]
+function pickRandomWords(submissions) {
+    let allWords = [];
+    let picks = []
+    let pickCount = 5;
+    console.log(submissions)
+    for (let i = 0; i < submissions.length; i++) {
+        for (let j = 0; j < submissions[i].words.length; j++) {
+            allWords.push(submissions[i].words[j])
+        }
+    }
+
+    console.log(allWords)
+    while (picks.length < pickCount) {
+        let word = allWords[getRandomInt(0, allWords.length - 1)]
+        let result = true
+        for (let i = 0; i < picks.length; i++){
+            if (word === picks[i]) {
+                result = false;
+            }
+        }
+        if (result){
+            console.log(picks)
+            picks.push(word)
+        }
+    }
+    
+    console.log('Final Picks')
+    console.log(picks)
+    return picks;
 }
 
 io.on('connection', function (socket) {
@@ -62,13 +89,14 @@ io.on('connection', function (socket) {
         console.log(words)
         let data = JSON.parse(fs.readFileSync(dataFile))
         let randomWords = pickRandomWords(data.submissions)
-        
+
         data.submissions.push(new Submission(words, Date.now()))
         fs.writeFileSync(dataFile, JSON.stringify(data))
         console.log(randomWords)
-        setTimeout(function(){
-         // printWords(randomWords.words)
-        }, 4000)
+        //        setTimeout(function () {
+        //       console.log(randomWords)
+        //printWords(randomWords.words)
+        //      }, 4000)
 
     });
     socket.on('disconnect', function () {
